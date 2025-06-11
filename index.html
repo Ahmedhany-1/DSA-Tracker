@@ -13,9 +13,9 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             min-height: 100vh;
-            color: #333;
+            color: #e0e0e0;
         }
 
         .container {
@@ -27,13 +27,17 @@
         .header {
             text-align: center;
             margin-bottom: 30px;
-            color: white;
+            color: #fff;
         }
 
         .header h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-tabs {
@@ -46,25 +50,27 @@
         .tab-btn {
             padding: 12px 24px;
             background: rgba(255,255,255,0.1);
-            border: none;
+            border: 1px solid rgba(255,255,255,0.2);
             border-radius: 25px;
-            color: white;
+            color: #fff;
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
 
         .tab-btn.active {
-            background: rgba(255,255,255,0.2);
+            background: linear-gradient(45deg, #667eea, #764ba2);
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
         }
 
         .tab-content {
             display: none;
-            background: rgba(255,255,255,0.95);
+            background: rgba(30, 30, 50, 0.9);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             backdrop-filter: blur(10px);
         }
 
@@ -85,9 +91,16 @@
         .user-input input {
             flex: 1;
             padding: 12px;
-            border: 2px solid #ddd;
+            border: 2px solid rgba(255,255,255,0.2);
             border-radius: 10px;
             font-size: 16px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            backdrop-filter: blur(10px);
+        }
+
+        .user-input input::placeholder {
+            color: rgba(255,255,255,0.6);
         }
 
         .btn {
@@ -98,11 +111,72 @@
             border-radius: 10px;
             cursor: pointer;
             font-size: 16px;
-            transition: transform 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .challenge-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .challenge-card {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(78, 205, 196, 0.2));
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .challenge-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .challenge-card:hover::before {
+            left: 100%;
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .challenge-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #4ecdc4;
+        }
+
+        .challenge-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .challenge-desc {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
         }
 
         .users-grid {
@@ -113,43 +187,82 @@
         }
 
         .user-card {
-            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            border: 1px solid rgba(255,255,255,0.2);
             padding: 20px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .user-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .user-card:hover::before {
+            left: 100%;
         }
 
         .user-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
 
         .user-card h3 {
-            margin-bottom: 10px;
-            color: #333;
+            margin-bottom: 15px;
+            color: #fff;
+            font-size: 1.3rem;
         }
 
         .progress-bar {
             width: 100%;
             height: 20px;
-            background: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
             border-radius: 10px;
             overflow: hidden;
-            margin: 10px 0;
+            margin: 15px 0;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #4CAF50, #45a049);
             transition: width 0.5s ease;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         .problem-form {
-            background: #f8f9fa;
+            background: rgba(50, 50, 70, 0.8);
+            border: 1px solid rgba(255,255,255,0.2);
             padding: 25px;
             border-radius: 15px;
             margin-bottom: 30px;
+            backdrop-filter: blur(10px);
         }
 
         .form-group {
@@ -160,15 +273,22 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #555;
+            color: #4ecdc4;
         }
 
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 2px solid #ddd;
+            border: 2px solid rgba(255,255,255,0.2);
             border-radius: 10px;
             font-size: 16px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input::placeholder, .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.6);
         }
 
         .form-group textarea {
@@ -176,16 +296,44 @@
             resize: vertical;
         }
 
+        .category-input-group {
+            display: flex;
+            gap: 10px;
+            align-items: end;
+        }
+
+        .category-input-group input {
+            flex: 1;
+        }
+
+        .add-category-btn {
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .add-category-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(78, 205, 196, 0.4);
+        }
+
         .categories-container {
             margin-top: 30px;
         }
 
         .category-section {
-            background: #fff;
+            background: rgba(40, 40, 60, 0.9);
+            border: 1px solid rgba(255,255,255,0.2);
             border-radius: 15px;
             margin-bottom: 30px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
 
         .category-header {
@@ -203,140 +351,61 @@
             background: linear-gradient(135deg, #5a6fd8, #6a42a0);
         }
 
-        .category-title {
-            font-size: 1.3rem;
-            font-weight: 600;
+        .leaderboard {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(252, 182, 159, 0.2));
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
         }
 
-        .category-toggle {
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .category-content {
-            display: none;
-        }
-
-        .category-content.active {
-            display: block;
-        }
-
-        .subcategory-section {
-            border-left: 4px solid #667eea;
-            margin: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .subcategory-header {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 15px 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #dee2e6;
-        }
-
-        .subcategory-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #495057;
-        }
-
-        .subcategory-stats {
-            display: flex;
-            gap: 15px;
-            font-size: 0.9rem;
-            color: #6c757d;
-        }
-
-        .difficulty-tabs {
-            display: flex;
-            background: #fff;
-            border-bottom: 1px solid #dee2e6;
-        }
-
-        .difficulty-tab {
-            flex: 1;
-            padding: 12px;
+        .leaderboard h2 {
             text-align: center;
-            cursor: pointer;
-            font-weight: 600;
-            border-right: 1px solid #dee2e6;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            margin-bottom: 10px;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
-        .difficulty-tab:last-child {
-            border-right: none;
+        .leaderboard-item:hover {
+            transform: scale(1.02);
+            background: rgba(255,255,255,0.15);
         }
 
-        .difficulty-tab.easy {
-            color: #155724;
-            background: #d4edda;
-        }
-
-        .difficulty-tab.medium {
-            color: #856404;
-            background: #fff3cd;
-        }
-
-        .difficulty-tab.hard {
-            color: #721c24;
-            background: #f8d7da;
-        }
-
-        .difficulty-tab.active {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .problems-list {
+        .export-section {
+            text-align: center;
+            margin-top: 30px;
             padding: 20px;
-            background: #fff;
+            background: rgba(50, 50, 70, 0.8);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
         }
 
         .problem-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            border: 2px solid #e9ecef;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
             border-radius: 10px;
             margin-bottom: 10px;
+            padding: 15px;
             transition: all 0.3s ease;
         }
 
         .problem-item:hover {
             border-color: #667eea;
             transform: translateX(10px);
-        }
-
-        .problem-info {
-            flex: 1;
-        }
-
-        .problem-name {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .problem-meta {
-            font-size: 0.9rem;
-            color: #6c757d;
-        }
-
-        .problem-actions {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .progress-indicators {
-            display: flex;
-            gap: 8px;
+            background: rgba(255,255,255,0.1);
         }
 
         .user-indicator {
@@ -350,92 +419,123 @@
             font-weight: bold;
             color: white;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
         }
 
         .user-indicator:hover {
-            transform: scale(1.1);
+            transform: scale(1.2);
         }
 
-        .user-indicator.solved {
-            background: #28a745;
-        }
-
-        .user-indicator.attempted {
-            background: #ffc107;
-            color: #333;
-        }
-
-        .user-indicator.not-started {
-            background: #6c757d;
-        }
-
-        .leaderboard {
-            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        .streak-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 5px 10px;
             border-radius: 15px;
-            padding: 25px;
+            font-size: 0.8rem;
+            font-weight: bold;
         }
 
-        .leaderboard h2 {
-            text-align: center;
+        .daily-challenge {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.3), rgba(255, 142, 83, 0.3));
+            border: 2px solid rgba(255, 107, 107, 0.5);
+            padding: 20px;
+            border-radius: 15px;
             margin-bottom: 20px;
-            color: #333;
+            text-align: center;
         }
 
-        .leaderboard-item {
+        .daily-challenge h3 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        /* New styles for editable categories */
+        .editable-category {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 15px;
-            background: rgba(255,255,255,0.7);
-            border-radius: 10px;
+            gap: 10px;
             margin-bottom: 10px;
-            transition: transform 0.2s ease;
+        }
+        
+        .editable-category input {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        
+        .category-actions {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .category-actions button {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .category-actions button:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* Enhanced challenge cards */
+        .challenge-card.completed {
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.3), rgba(56, 142, 60, 0.3));
+            border-color: rgba(76, 175, 80, 0.5);
+        }
+        
+        .challenge-card.completed .challenge-title {
+            color: #4CAF50;
+        }
+        
+        /* Progress animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
         }
 
-        .leaderboard-item:hover {
-            transform: scale(1.02);
-        }
-
-        .rank {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #667eea;
-            width: 40px;
-        }
-
-        .export-section {
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 15px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+        .weekly-challenges {
             margin-bottom: 30px;
         }
 
-        .stat-card {
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
         }
 
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #333;
+        .challenge-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            transition: all 0.3s ease;
         }
 
-        .stat-label {
-            color: #666;
-            font-size: 14px;
-            margin-top: 5px;
+        .challenge-item.completed {
+            background: rgba(76, 175, 80, 0.2);
+            border-color: rgba(76, 175, 80, 0.5);
+        }
+
+        .challenge-item h4 {
+            margin-bottom: 10px;
+            color: #4ecdc4;
         }
 
         @media (max-width: 768px) {
@@ -454,6 +554,10 @@
             .tab-content {
                 padding: 20px;
             }
+
+            .challenge-dashboard {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -461,37 +565,74 @@
     <div class="container">
         <div class="header">
             <h1>🚀 DSA Progress Tracker</h1>
-            <p>Track your coding journey with friends!</p>
+            <p>Master Data Structures & Algorithms with your team!</p>
         </div>
 
         <div class="nav-tabs">
-            <button class="tab-btn active" onclick="showTab('dashboard')">Dashboard</button>
-            <button class="tab-btn" onclick="showTab('problems')">Problems</button>
-            <button class="tab-btn" onclick="showTab('leaderboard')">Leaderboard</button>
-            <button class="tab-btn" onclick="showTab('export')">Share</button>
+            <button class="tab-btn active" onclick="showTab('dashboard')">🏠 Dashboard</button>
+            <button class="tab-btn" onclick="showTab('problems')">📝 Problems</button>
+            <button class="tab-btn" onclick="showTab('categories')">🗂️ Categories</button>
+            <button class="tab-btn" onclick="showTab('leaderboard')">🏆 Leaderboard</button>
+            <button class="tab-btn" onclick="showTab('export')">📤 Share</button>
         </div>
 
         <div id="dashboard" class="tab-content active">
             <div class="user-section">
-                <h2>Add Team Member</h2>
+                <h2>👥 Add Team Member</h2>
                 <div class="user-input">
-                    <input type="text" id="userName" placeholder="Enter your name">
-                    <button class="btn" onclick="addUser()">Add User</button>
+                    <input type="text" id="userName" placeholder="Enter team member name">
+                    <button class="btn" onclick="addUser()">Add Member</button>
                 </div>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number" id="totalProblems">0</div>
-                    <div class="stat-label">Total Problems</div>
+            <div class="daily-challenge">
+                <h3>🔥 Today's Challenge</h3>
+                <p id="dailyChallengeText">Solve at least 3 problems to maintain your streak!</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="dailyChallengeProgress" style="width: 0%"></div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="totalUsers">0</div>
-                    <div class="stat-label">Team Members</div>
+            </div>
+
+            <div class="challenge-dashboard">
+                <div class="challenge-card" id="totalProblemsCard">
+                    <div class="challenge-title">💪 Total Problems</div>
+                    <div class="challenge-value" id="totalProblems">0</div>
+                    <div class="challenge-desc">Ready to conquer</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="avgProgress">0%</div>
-                    <div class="stat-label">Average Progress</div>
+                <div class="challenge-card" id="teamSizeCard">
+                    <div class="challenge-title">👥 Team Size</div>
+                    <div class="challenge-value" id="totalUsers">0</div>
+                    <div class="challenge-desc">Coding warriors</div>
+                </div>
+                <div class="challenge-card" id="teamProgressCard">
+                    <div class="challenge-title">📊 Team Progress</div>
+                    <div class="challenge-value" id="avgProgress">0%</div>
+                    <div class="challenge-desc">Average completion</div>
+                </div>
+                <div class="challenge-card" id="activeStreakCard">
+                    <div class="challenge-title">🔥 Active Streak</div>
+                    <div class="challenge-value" id="activeStreak">0</div>
+                    <div class="challenge-desc">Days of coding</div>
+                </div>
+            </div>
+
+            <div class="weekly-challenges">
+                <h3>⭐ Weekly Challenges</h3>
+                <div class="challenges-grid">
+                    <div class="challenge-item" id="arrayChallenge">
+                        <h4>Array Master</h4>
+                        <p>Solve 5 array problems</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="challenge-item" id="dpChallenge">
+                        <h4>DP Initiate</h4>
+                        <p>Solve 3 DP problems</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -502,29 +643,26 @@
 
         <div id="problems" class="tab-content">
             <div class="problem-form">
-                <h2>Add New Problem</h2>
+                <h2>➕ Add New Problem</h2>
+                
                 <div class="form-group">
                     <label>Category</label>
-                    <select id="problemCategory" onchange="updateSubcategories()">
-                        <option value="">Select Category</option>
-                        <option value="Arrays and Strings">Arrays and Strings</option>
-                        <option value="Linked Lists">Linked Lists</option>
-                        <option value="Stacks and Queues">Stacks and Queues</option>
-                        <option value="Trees and Graphs">Trees and Graphs</option>
-                        <option value="Dynamic Programming">Dynamic Programming</option>
-                        <option value="Sorting and Searching">Sorting and Searching</option>
-                        <option value="Hash Tables">Hash Tables</option>
-                        <option value="Recursion and Backtracking">Recursion and Backtracking</option>
-                        <option value="Two Pointers">Two Pointers</option>
-                        <option value="Math and Logic">Math and Logic</option>
-                    </select>
+                    <div class="category-input-group">
+                        <input type="text" id="problemCategory" placeholder="Enter or select category" list="categoryList">
+                        <datalist id="categoryList"></datalist>
+                        <button class="add-category-btn" type="button" onclick="addNewCategory()">Add New</button>
+                    </div>
                 </div>
+                
                 <div class="form-group">
                     <label>Subcategory</label>
-                    <select id="problemSubcategory">
-                        <option value="">Select Subcategory</option>
-                    </select>
+                    <div class="category-input-group">
+                        <input type="text" id="problemSubcategory" placeholder="Enter or select subcategory" list="subcategoryList">
+                        <datalist id="subcategoryList"></datalist>
+                        <button class="add-category-btn" type="button" onclick="addNewSubcategory()">Add New</button>
+                    </div>
                 </div>
+                
                 <div class="form-group">
                     <label>Problem Title</label>
                     <input type="text" id="problemTitle" placeholder="e.g., Two Sum">
@@ -557,6 +695,25 @@
             </div>
         </div>
 
+        <div id="categories" class="tab-content">
+            <div class="problem-form">
+                <h2>🗂️ Manage Categories</h2>
+                
+                <div class="form-group">
+                    <label>Add New Category</label>
+                    <div class="category-input-group">
+                        <input type="text" id="newCategoryName" placeholder="Enter category name">
+                        <button class="add-category-btn" type="button" onclick="addNewCategoryFromManagement()">Add Category</button>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 30px;">Current Categories</h3>
+                <div id="categoriesList">
+                    <!-- Categories will be listed here -->
+                </div>
+            </div>
+        </div>
+
         <div id="leaderboard" class="tab-content">
             <div class="leaderboard">
                 <h2>🏆 Leaderboard</h2>
@@ -569,7 +726,7 @@
         <div id="export" class="tab-content">
             <div class="export-section">
                 <h2>📤 Share Your Progress</h2>
-                <p>Copy and share your progress data with friends!</p>
+                <p>Export and import progress data to sync with your team!</p>
                 <button class="btn" onclick="exportData()">Export Data</button>
                 <button class="btn" onclick="document.getElementById('importData').click()">Import Data</button>
                 <input type="file" id="importData" accept=".json" style="display: none;" onchange="importData(event)">
@@ -579,97 +736,60 @@
     </div>
 
     <script>
+        // Data structure
         let users = [];
         let problems = [];
+        let categories = {
+            "Arrays and Strings": ["Basic Array Operations", "String Manipulation", "Subarray Problems"],
+            "Linked Lists": ["Basic Operations", "Two Pointers", "Cycle Detection"],
+            "Dynamic Programming": ["1D DP", "2D DP", "Knapsack Problems"],
+            "Trees": ["Binary Trees", "BST", "Tree Traversals"]
+        };
         
-        const categories = {
-            "Arrays and Strings": [
-                "Basic Array Operations",
-                "String Manipulation",
-                "Subarray Problems",
-                "Matrix Operations",
-                "Sliding Window"
-            ],
-            "Linked Lists": [
-                "Basic Operations",
-                "Two Pointers",
-                "Cycle Detection",
-                "Reversal",
-                "Merge and Split"
-            ],
-            "Stacks and Queues": [
-                "Basic Stack Operations",
-                "Basic Queue Operations",
-                "Monotonic Stack",
-                "Priority Queue",
-                "Deque"
-            ],
-            "Trees and Graphs": [
-                "Binary Trees",
-                "Binary Search Trees",
-                "Tree Traversal",
-                "Graph Traversal",
-                "Shortest Path",
-                "Minimum Spanning Tree"
-            ],
-            "Dynamic Programming": [
-                "1D DP",
-                "2D DP",
-                "Knapsack Problems",
-                "Longest Common Subsequence",
-                "Palindrome Problems"
-            ],
-            "Sorting and Searching": [
-                "Basic Sorting",
-                "Binary Search",
-                "Search in Rotated Array",
-                "Merge Sort Applications",
-                "Quick Sort Applications"
-            ],
-            "Hash Tables": [
-                "Basic Hashing",
-                "Frequency Counting",
-                "Two Sum Variants",
-                "Grouping Problems"
-            ],
-            "Recursion and Backtracking": [
-                "Basic Recursion",
-                "Permutations",
-                "Combinations",
-                "N-Queens Problem",
-                "Sudoku Solver"
-            ],
-            "Two Pointers": [
-                "Opposite Direction",
-                "Same Direction",
-                "Three Pointers",
-                "Fast and Slow Pointers"
-            ],
-            "Math and Logic": [
-                "Number Theory",
-                "Bit Manipulation",
-                "Probability",
-                "Geometry"
+        let challenges = {
+            daily: {
+                target: 3,
+                current: 0,
+                description: "Solve at least 3 problems to maintain your streak!"
+            },
+            weekly: [
+                {
+                    id: "arrayChallenge",
+                    name: "Array Master",
+                    target: 5,
+                    current: 0,
+                    category: "Arrays and Strings"
+                },
+                {
+                    id: "dpChallenge",
+                    name: "DP Initiate",
+                    target: 3,
+                    current: 0,
+                    category: "Dynamic Programming"
+                }
             ]
         };
 
-        function updateSubcategories() {
-            const categorySelect = document.getElementById('problemCategory');
-            const subcategorySelect = document.getElementById('problemSubcategory');
-            const selectedCategory = categorySelect.value;
+        // DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            loadData();
+            updateDashboard();
+            renderCategories();
+            updateCategoryDatalist();
+            renderCategoriesManagement();
             
-            subcategorySelect.innerHTML = '<option value="">Select Subcategory</option>';
-            
-            if (selectedCategory && categories[selectedCategory]) {
-                categories[selectedCategory].forEach(subcategory => {
-                    const option = document.createElement('option');
-                    option.value = subcategory;
-                    option.textContent = subcategory;
-                    subcategorySelect.appendChild(option);
-                });
+            // Check if it's a new day for daily challenge
+            const today = new Date().toDateString();
+            if (localStorage.getItem('lastVisit') !== today) {
+                resetDailyChallenge();
+                localStorage.setItem('lastVisit', today);
             }
-        }
+            
+            // Set up category input listener
+            document.getElementById('problemCategory').addEventListener('input', updateSubcategoryDatalist);
+        });
 
+        // Tab Navigation
         function showTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -679,9 +799,12 @@
             
             if (tabName === 'leaderboard') {
                 updateLeaderboard();
+            } else if (tabName === 'categories') {
+                renderCategoriesManagement();
             }
         }
 
+        // User Management
         function addUser() {
             const nameInput = document.getElementById('userName');
             const name = nameInput.value.trim();
@@ -690,7 +813,8 @@
                 users.push({
                     name: name,
                     progress: {},
-                    totalSolved: 0
+                    totalSolved: 0,
+                    streak: Math.floor(Math.random() * 10) + 1 // Random streak for demo
                 });
                 nameInput.value = '';
                 updateDashboard();
@@ -698,10 +822,11 @@
             }
         }
 
+        // Problem Management
         function addProblem() {
             const title = document.getElementById('problemTitle').value.trim();
-            const category = document.getElementById('problemCategory').value;
-            const subcategory = document.getElementById('problemSubcategory').value;
+            const category = document.getElementById('problemCategory').value.trim();
+            const subcategory = document.getElementById('problemSubcategory').value.trim();
             const source = document.getElementById('problemSource').value.trim();
             const url = document.getElementById('problemUrl').value.trim();
             const difficulty = document.getElementById('problemDifficulty').value;
@@ -724,414 +849,703 @@
                 
                 // Clear form
                 document.getElementById('problemTitle').value = '';
-                document.getElementById('problemCategory').value = '';
-                document.getElementById('problemSubcategory').innerHTML = '<option value="">Select Subcategory</option>';
                 document.getElementById('problemSource').value = '';
                 document.getElementById('problemUrl').value = '';
                 document.getElementById('problemNotes').value = '';
                 
+                // Update challenges if this problem matches any
+                updateChallengeProgress(problem.category);
+                
                 renderCategories();
                 updateDashboard();
                 saveData();
             }
         }
 
-        function renderCategories() {
-            const container = document.getElementById('categoriesContainer');
+        function updateChallengeProgress(category) {
+            // Update daily challenge
+            challenges.daily.current += 1;
+            
+            // Update weekly challenges
+            challenges.weekly.forEach(challenge => {
+                if (challenge.category === category) {
+                    challenge.current += 1;
+                }
+            });
+            
+            updateDashboard();
+            saveData();
+        }
+
+        function resetDailyChallenge() {
+            challenges.daily.current = 0;
+            saveData();
+        }
+
+        // Category Management
+        function updateCategoryDatalist() {
+            const categoryList = document.getElementById('categoryList');
+            categoryList.innerHTML = '';
+            Object.keys(categories).forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                categoryList.appendChild(option);
+            });
+        }
+
+        function updateSubcategoryDatalist() {
+            const categoryInput = document.getElementById('problemCategory');
+            const subcategoryList = document.getElementById('subcategoryList');
+            const selectedCategory = categoryInput.value;
+            
+            subcategoryList.innerHTML = '';
+            
+            if (selectedCategory && categories[selectedCategory]) {
+                categories[selectedCategory].forEach(subcategory => {
+                    const option = document.createElement('option');
+                    option.value = subcategory;
+                    subcategoryList.appendChild(option);
+                });
+            }
+        }
+
+        function addNewCategory() {
+            const categoryInput = document.getElementById('problemCategory');
+            const newCategory = categoryInput.value.trim();
+            
+            if (newCategory && !categories[newCategory]) {
+                categories[newCategory] = [];
+                updateCategoryDatalist();
+                alert(`Category "${newCategory}" added successfully!`);
+                saveData();
+            }
+        }
+
+        function addNewSubcategory() {
+            const categoryInput = document.getElementById('problemCategory');
+            const subcategoryInput = document.getElementById('problemSubcategory');
+            const category = categoryInput.value.trim();
+            const newSubcategory = subcategoryInput.value.trim();
+            
+            if (category && newSubcategory) {
+                if (!categories[category]) {
+                    categories[category] = [];
+                }
+                if (!categories[category].includes(newSubcategory)) {
+                    categories[category].push(newSubcategory);
+                    updateSubcategoryDatalist();
+                    alert(`Subcategory "${newSubcategory}" added to "${category}"!`);
+                    saveData();
+                }
+            }
+        }
+
+        function addNewCategoryFromManagement() {
+            const input = document.getElementById('newCategoryName');
+            const newCategory = input.value.trim();
+            
+            if (newCategory && !categories[newCategory]) {
+                categories[newCategory] = [];
+                input.value = '';
+                updateCategoryDatalist();
+                saveData();
+                renderCategoriesManagement();
+            }
+        }
+
+        function renderCategoriesManagement() {
+            const container = document.getElementById('categoriesList');
             container.innerHTML = '';
             
-            // Group problems by category and subcategory
-            const groupedProblems = {};
-            
-            problems.forEach(problem => {
-                if (!groupedProblems[problem.category]) {
-                    groupedProblems[problem.category] = {};
-                }
-                if (!groupedProblems[problem.category][problem.subcategory]) {
-                    groupedProblems[problem.category][problem.subcategory] = {
-                        easy: [],
-                        medium: [],
-                        hard: []
-                    };
-                }
-                groupedProblems[problem.category][problem.subcategory][problem.difficulty].push(problem);
-            });
-            
-            // Render each category
-            Object.keys(groupedProblems).forEach(categoryName => {
-                const categorySection = document.createElement('div');
-                categorySection.className = 'category-section';
+            Object.keys(categories).forEach(category => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'editable-category';
                 
-                const categoryHeader = document.createElement('div');
-                categoryHeader.className = 'category-header';
-                categoryHeader.onclick = () => toggleCategory(categoryName);
-                
-                const totalProblems = Object.values(groupedProblems[categoryName])
-                    .reduce((sum, subcategory) => {
-                        return sum + subcategory.easy.length + subcategory.medium.length + subcategory.hard.length;
-                    }, 0);
-                
-                categoryHeader.innerHTML = `
-                    <div>
-                        <div class="category-title">${categoryName}</div>
-                        <div style="font-size: 0.9rem; opacity: 0.9;">${totalProblems} problems</div>
+                categoryDiv.innerHTML = `
+                    <input type="text" value="${category}" id="category-${category}">
+                    <div class="category-actions">
+                        <button onclick="updateCategory('${category}')">Update</button>
+                        <button onclick="deleteCategory('${category}')">Delete</button>
                     </div>
-                    <span class="category-toggle" id="toggle-${categoryName}">▼</span>
+                    <div style="flex: 1;">
+                        <input type="text" id="newSubcategory-${category}" placeholder="Add subcategory">
+                        <button onclick="addSubcategory('${category}')">Add</button>
+                    </div>
                 `;
                 
-                const categoryContent = document.createElement('div');
-                categoryContent.className = 'category-content';
-                categoryContent.id = `content-${categoryName}`;
+                const subcategoriesList = document.createElement('div');
+                subcategoriesList.style.marginTop = '10px';
+                subcategoriesList.style.paddingLeft = '20px';
                 
-                // Render subcategories
-                Object.keys(groupedProblems[categoryName]).forEach(subcategoryName => {
-                    const subcategoryData = groupedProblems[categoryName][subcategoryName];
-                    const subcategorySection = document.createElement('div');
-                    subcategorySection.className = 'subcategory-section';
-                    
-                    const totalSubcategoryProblems = subcategoryData.easy.length + subcategoryData.medium.length + subcategoryData.hard.length;
-                    
-                    subcategorySection.innerHTML = `
-                        <div class="subcategory-header" onclick="toggleSubcategory('${categoryName}', '${subcategoryName}')">
-                            <div class="subcategory-title">${subcategoryName}</div>
-                            <div class="subcategory-stats">
-                                <span>Easy: ${subcategoryData.easy.length}</span>
-                                <span>Medium: ${subcategoryData.medium.length}</span>
-                                <span>Hard: ${subcategoryData.hard.length}</span>
-                                <span class="category-toggle" id="toggle-${categoryName}-${subcategoryName}">▼</span>
-                            </div>
-                        </div>
-                        <div class="subcategory-content" id="subcontent-${categoryName}-${subcategoryName}" style="display: none;">
-                            <div class="difficulty-tabs">
-                                <div class="difficulty-tab easy active" onclick="showDifficulty('${categoryName}', '${subcategoryName}', 'easy')">
-                                    Easy (${subcategoryData.easy.length})
-                                </div>
-                                <div class="difficulty-tab medium" onclick="showDifficulty('${categoryName}', '${subcategoryName}', 'medium')">
-                                    Medium (${subcategoryData.medium.length})
-                                </div>
-                                <div class="difficulty-tab hard" onclick="showDifficulty('${categoryName}', '${subcategoryName}', 'hard')">
-                                    Hard (${subcategoryData.hard.length})
-                                </div>
-                            </div>
-                            <div class="problems-list" id="problems-${categoryName}-${subcategoryName}-easy">
-                                ${renderProblemsList(subcategoryData.easy)}
-                            </div>
-                            <div class="problems-list" id="problems-${categoryName}-${subcategoryName}-medium" style="display: none;">
-                                ${renderProblemsList(subcategoryData.medium)}
-                            </div>
-                            <div class="problems-list" id="problems-${categoryName}-${subcategoryName}-hard" style="display: none;">
-                                ${renderProblemsList(subcategoryData.hard)}
-                            </div>
+                categories[category].forEach(subcategory => {
+                    const subDiv = document.createElement('div');
+                    subDiv.className = 'editable-category';
+                    subDiv.innerHTML = `
+                        <span style="opacity: 0.7;">↳</span>
+                        <input type="text" value="${subcategory}" id="subcategory-${category}-${subcategory}">
+                        <div class="category-actions">
+                            <button onclick="updateSubcategory('${category}', '${subcategory}')">Update</button>
+                            <button onclick="deleteSubcategory('${category}', '${subcategory}')">Delete</button>
                         </div>
                     `;
-                    
-                    categoryContent.appendChild(subcategorySection);
+                    subcategoriesList.appendChild(subDiv);
                 });
                 
-                categorySection.appendChild(categoryHeader);
-                categorySection.appendChild(categoryContent);
-                container.appendChild(categorySection);
+                categoryDiv.appendChild(subcategoriesList);
+                container.appendChild(categoryDiv);
             });
         }
 
-        function renderProblemsList(problemsList) {
-            if (problemsList.length === 0) {
-                return '<p style="text-align: center; color: #6c757d; padding: 20px;">No problems added yet</p>';
-            }
-            
-            return problemsList.map(problem => {
-                const userIndicators = users.map(user => {
-                    const status = user.progress[problem.id] || 'not-started';
-                    const initial = user.name.charAt(0).toUpperCase();
-                    return `
-                        <div class="user-indicator ${status}" 
-                             title="${user.name} - ${status}" 
-                             onclick="toggleUserProgress('${user.name}', ${problem.id})">
-                            ${initial}
-                        </div>
-                    `;
-                }).join('');
+        function updateCategory(oldName) {
+            const newName = document.getElementById(`category-${oldName}`).value.trim();
+            if (newName && newName !== oldName) {
+                categories[newName] = categories[oldName];
+                delete categories[oldName];
                 
-                return `
-                    <div class="problem-item">
-                        <div class="problem-info">
-                            <div class="problem-name">${problem.title}</div>
-                            <div class="problem-meta">
-                                ${problem.source ? `📚 ${problem.source}` : ''}
-                                ${problem.url ? ` • <a href="${problem.url}" target="_blank">🔗 View Problem</a>` : ''}
-                                ${problem.notes ? ` • 📝 ${problem.notes}` : ''}
-                            </div>
-                        </div>
-                        <div class="problem-actions">
-                            <div class="progress-indicators">
-                                ${userIndicators}
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function toggleCategory(categoryName) {
-            const content = document.getElementById(`content-${categoryName}`);
-            const toggle = document.getElementById(`toggle-${categoryName}`);
-            
-            if (content.classList.contains('active')) {
-                content.classList.remove('active');
-                toggle.textContent = '▼';
-            } else {
-                content.classList.add('active');
-                toggle.textContent = '▲';
-            }
-        }
-
-        function toggleSubcategory(categoryName, subcategoryName) {
-            const content = document.getElementById(`subcontent-${categoryName}-${subcategoryName}`);
-            const toggle = document.getElementById(`toggle-${categoryName}-${subcategoryName}`);
-            
-            if (content.style.display === 'none') {
-                content.style.display = 'block';
-                toggle.textContent = '▲';
-            } else {
-                content.style.display = 'none';
-                toggle.textContent = '▼';
-            }
-        }
-
-        function showDifficulty(categoryName, subcategoryName, difficulty) {
-            // Hide all difficulty lists
-            ['easy', 'medium', 'hard'].forEach(diff => {
-                const list = document.getElementById(`problems-${categoryName}-${subcategoryName}-${diff}`);
-                const tab = document.querySelector(`[onclick="showDifficulty('${categoryName}', '${subcategoryName}', '${diff}')"]`);
-                if (list) list.style.display = 'none';
-                if (tab) tab.classList.remove('active');
-            });
-            
-            // Show selected difficulty
-            const selectedList = document.getElementById(`problems-${categoryName}-${subcategoryName}-${difficulty}`);
-            const selectedTab = document.querySelector(`[onclick="showDifficulty('${categoryName}', '${subcategoryName}', '${difficulty}')"]`);
-            if (selectedList) selectedList.style.display = 'block';
-            if (selectedTab) selectedTab.classList.add('active');
-        }
-
-        function toggleUserProgress(userName, problemId) {
-            const user = users.find(u => u.name === userName);
-            if (user) {
-                const currentStatus = user.progress[problemId] || 'not-started';
-                const statusCycle = {
-                    'not-started': 'attempted',
-                    'attempted': 'solved',
-                    'solved': 'not-started'
-                };
+                // Update problems with this category
+                problems.forEach(problem => {
+                    if (problem.category === oldName) {
+                        problem.category = newName;
+                    }
+                });
                 
-                user.progress[problemId] = statusCycle[currentStatus];
+                saveData();
+                renderCategoriesManagement();
+                renderCategories();
+            }
+        }
+
+        function deleteCategory(category) {
+            if (confirm(`Are you sure you want to delete the category "${category}" and all its subcategories?`)) {
+                delete categories[category];
+                
+                // Remove problems in this category
+                problems = problems.filter(problem => problem.category !== category);
+                
+                saveData();
+                renderCategoriesManagement();
                 renderCategories();
                 updateDashboard();
-                saveData();
             }
         }
 
-        function updateDashboard() {
-            const usersGrid = document.getElementById('usersGrid');
-            usersGrid.innerHTML = '';
+        function addSubcategory(category) {
+            const input = document.getElementById(`newSubcategory-${category}`);
+            const newSubcategory = input.value.trim();
             
-            users.forEach(user => {
-                const solvedCount = Object.values(user.progress).filter(status => status === 'solved').length;
-                const attemptedCount = Object.values(user.progress).filter(status => status === 'attempted').length;
-                const totalProblems = problems.length;
-                const progressPercent = totalProblems > 0 ? Math.round((solvedCount / totalProblems) * 100) : 0;
-                
-                const userCard = document.createElement('div');
-                userCard.className = 'user-card';
-                userCard.innerHTML = `
-                    <h3>${user.name}</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: ${progressPercent}%"></div>
-                    </div>
-                    <p>${solvedCount} solved • ${attemptedCount} attempted</p>
-                    <p>${progressPercent}% complete</p>
-                `;
-                usersGrid.appendChild(userCard);
-            });
-            
-            // Update stats
-            document.getElementById('totalProblems').textContent = problems.length;
-            document.getElementById('totalUsers').textContent = users.length;
-            
-            const avgProgress = users.length > 0 ? 
-                Math.round(users.reduce((sum, user) => {
-                    const solved = Object.values(user.progress).filter(status => status === 'solved').length;
-                    return sum + (problems.length > 0 ? (solved / problems.length) * 100 : 0);
-                }, 0) / users.length) : 0;
-            document.getElementById('avgProgress').textContent = avgProgress + '%';
-        }
-
-        function updateProblemsGrid() {
-            renderCategories();
-        }
-
-        function updateUserProgress(userName, problemId, status) {
-            const user = users.find(u => u.name === userName);
-            if (user) {
-                user.progress[problemId] = status;
-                updateDashboard();
+            if (newSubcategory && !categories[category].includes(newSubcategory)) {
+                categories[category].push(newSubcategory);
+                input.value = '';
+                saveData();
+                renderCategoriesManagement();
                 renderCategories();
-                saveData();
             }
         }
 
-        function updateLeaderboard() {
-            const leaderboardList = document.getElementById('leaderboardList');
-            leaderboardList.innerHTML = '';
+        function updateSubcategory(category, oldSubcategory) {
+            const input = document.getElementById(`subcategory-${category}-${oldSubcategory}`);
+            const newSubcategory = input.value.trim();
             
-            const sortedUsers = [...users].sort((a, b) => {
-                const aSolved = Object.values(a.progress).filter(status => status === 'solved').length;
-                const bSolved = Object.values(b.progress).filter(status => status === 'solved').length;
-                return bSolved - aSolved;
-            });
-            
-            sortedUsers.forEach((user, index) => {
-                const solvedCount = Object.values(user.progress).filter(status => status === 'solved').length;
-                const attemptedCount = Object.values(user.progress).filter(status => status === 'attempted').length;
-                
-                const item = document.createElement('div');
-                item.className = 'leaderboard-item';
-                item.innerHTML = `
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <span class="rank">#${index + 1}</span>
-                        <div>
-                            <strong>${user.name}</strong>
-                            <div style="font-size: 14px; color: #666;">
-                                ${solvedCount} solved • ${attemptedCount} attempted
-                            </div>
-                        </div>
-                    </div>
-                    <div style="text-align: right;">
-                        <div style="font-size: 1.2rem; font-weight: bold; color: #28a745;">
-                            ${solvedCount} 🏆
-                        </div>
-                    </div>
-                `;
-                leaderboardList.appendChild(item);
-            });
-        }
-
-        function exportData() {
-            const data = {
-                users: users,
-                problems: problems,
-                exportDate: new Date().toISOString()
-            };
-            
-            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'dsa-progress.json';
-            a.click();
-            URL.revokeObjectURL(url);
-            
-            document.getElementById('exportResult').innerHTML = `
-                <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 10px; margin-top: 15px;">
-                    ✅ Data exported successfully! Share the downloaded file with your friends.
-                </div>
-            `;
-        }
-
-        function importData(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    try {
-                        const data = JSON.parse(e.target.result);
-                        users = data.users || [];
-                        problems = data.problems || [];
-                        
-                        updateDashboard();
-                        updateProblemsGrid();
-                        saveData();
-                        
-                        document.getElementById('exportResult').innerHTML = `
-                            <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 10px; margin-top: 15px;">
-                                ✅ Data imported successfully! Found ${users.length} users and ${problems.length} problems.
-                            </div>
-                        `;
-                    } catch (error) {
-                        document.getElementById('exportResult').innerHTML = `
-                            <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 10px; margin-top: 15px;">
-                                ❌ Error importing data. Please check the file format.
-                            </div>
-                        `;
-                    }
-                };
-                reader.readAsText(file);
+            if (newSubcategory && newSubcategory !== oldSubcategory) {
+                const index = categories[category].indexOf(oldSubcategory);
+                if (index !== -1) {
+                    categories[category][index] = newSubcategory;
+                    
+                    // Update problems with this subcategory
+                    problems.forEach(problem => {
+                        if (problem.category === category && problem.subcategory === oldSubcategory) {
+                            problem.subcategory = newSubcategory;
+                        }
+                    });
+                    
+                    saveData();
+                    renderCategoriesManagement();
+                    renderCategories();
+                }
             }
         }
 
-        function saveData() {
-            const data = { users, problems };
-            // Using in-memory storage only since localStorage is not available
-            window.dsaData = data;
-        }
-
-        function loadData() {
-            if (window.dsaData) {
-                users = window.dsaData.users || [];
-                problems = window.dsaData.problems || [];
-                updateDashboard();
-                updateProblemsGrid();
+        function deleteSubcategory(category, subcategory) {
+            if (confirm(`Are you sure you want to delete the subcategory "${subcategory}" from "${category}"?`)) {
+                const index = categories[category].indexOf(subcategory);
+                if (index !== -1) {
+                    categories[category].splice(index, 1);
+                    
+                    // Remove problems in this subcategory
+                    problems = problems.filter(problem => 
+                        !(problem.category === category && problem.subcategory === subcategory));
+                    
+                    saveData();
+                    renderCategoriesManagement();
+                    renderCategories();
+                    updateDashboard();
+                }
             }
         }
 
-        // Initialize the app
-        window.addEventListener('load', () => {
-            loadData();
-            
-            // Add some sample problems to get started
-            if (problems.length === 0) {
-                const sampleProblems = [
-                    {
-                        id: 1,
-                        title: "Two Sum",
-                        category: "Arrays and Strings",
-                        subcategory: "Basic Array Operations",
-                        source: "LeetCode",
-                        url: "https://leetcode.com/problems/two-sum/",
-                        difficulty: "easy",
-                        notes: "Classic problem - use hash map for O(n) solution",
-                        dateAdded: new Date().toLocaleDateString()
-                    },
-                    {
-                        id: 2,
-                        title: "Valid Parentheses",
-                        category: "Stacks and Queues",
-                        subcategory: "Basic Stack Operations",
-                        source: "LeetCode",
-                        url: "https://leetcode.com/problems/valid-parentheses/",
-                        difficulty: "easy",
-                        notes: "Use stack to track opening brackets",
-                        dateAdded: new Date().toLocaleDateString()
-                    },
-                    {
-                        id: 3,
-                        title: "Merge Two Sorted Lists",
-                        category: "Linked Lists",
-                        subcategory: "Basic Operations",
-                        source: "LeetCode",
-                        url: "https://leetcode.com/problems/merge-two-sorted-lists/",
-                        difficulty: "easy",
-                        notes: "Great for learning linked list manipulation",
-                        dateAdded: new Date().toLocaleDateString()
-                    }
-                ];
-                
-                problems = sampleProblems;
-                updateProblemsGrid();
-                updateDashboard();
-                saveData();
-            }
+        // Problem Categories Rendering
+        // Continuing from where the code left off...
+
+function renderCategories() {
+    const container = document.getElementById('categoriesContainer');
+    container.innerHTML = '';
+    
+    // Group problems by category and subcategory
+    const groupedProblems = {};
+    
+    problems.forEach(problem => {
+        if (!groupedProblems[problem.category]) {
+            groupedProblems[problem.category] = {};
+        }
+        if (!groupedProblems[problem.category][problem.subcategory]) {
+            groupedProblems[problem.category][problem.subcategory] = [];
+        }
+        groupedProblems[problem.category][problem.subcategory].push(problem);
+    });
+    
+    // Render each category
+    Object.keys(groupedProblems).forEach(category => {
+        const categorySection = document.createElement('div');
+        categorySection.className = 'category-section';
+        
+        const categoryHeader = document.createElement('div');
+        categoryHeader.className = 'category-header';
+        categoryHeader.innerHTML = `
+            <h3>${category}</h3>
+            <span>▼</span>
+        `;
+        
+        const categoryContent = document.createElement('div');
+        categoryContent.className = 'category-content';
+        categoryContent.style.display = 'none';
+        
+        // Add click handler to toggle subcategories
+        categoryHeader.addEventListener('click', function() {
+            const isHidden = categoryContent.style.display === 'none';
+            categoryContent.style.display = isHidden ? 'block' : 'none';
+            categoryHeader.querySelector('span').textContent = isHidden ? '▲' : '▼';
         });
-    </script>
+        
+        // Render subcategories
+        Object.keys(groupedProblems[category]).forEach(subcategory => {
+            const subcategoryDiv = document.createElement('div');
+            subcategoryDiv.className = 'subcategory-section';
+            subcategoryDiv.innerHTML = `<h4>${subcategory}</h4>`;
+            
+            // Render problems in this subcategory
+            groupedProblems[category][subcategory].forEach(problem => {
+                const problemItem = document.createElement('div');
+                problemItem.className = 'problem-item';
+                problemItem.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <strong>${problem.title}</strong> 
+                            <span style="font-size: 0.8em; color: ${getDifficultyColor(problem.difficulty)}">
+                                (${problem.difficulty.charAt(0).toUpperCase() + problem.difficulty.slice(1)})
+                            </span>
+                        </div>
+                        <div class="user-indicators" style="display: flex; gap: 5px;"></div>
+                    </div>
+                    ${problem.source ? `<p style="font-size: 0.9em; margin-top: 5px;">Source: ${problem.source}</p>` : ''}
+                    ${problem.notes ? `<p style="font-size: 0.9em; margin-top: 5px;">${problem.notes}</p>` : ''}
+                    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                        <small>Added: ${problem.dateAdded}</small>
+                        ${problem.url ? `<a href="${problem.url}" target="_blank" style="color: #4ecdc4;">View Problem</a>` : ''}
+                    </div>
+                `;
+                
+                // Add user indicators for who solved this problem
+                const indicatorsContainer = problemItem.querySelector('.user-indicators');
+                users.forEach(user => {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'user-indicator';
+                    indicator.textContent = user.name.charAt(0).toUpperCase();
+                    indicator.style.backgroundColor = stringToColor(user.name);
+                    
+                    if (user.progress[problem.id]) {
+                        indicator.style.borderColor = '#4CAF50';
+                        indicator.style.boxShadow = '0 0 5px #4CAF50';
+                    }
+                    
+                    indicator.addEventListener('click', function() {
+                        toggleProblemCompletion(user.name, problem.id);
+                    });
+                    
+                    indicatorsContainer.appendChild(indicator);
+                });
+                
+                subcategoryDiv.appendChild(problemItem);
+            });
+            
+            categoryContent.appendChild(subcategoryDiv);
+        });
+        
+        categorySection.appendChild(categoryHeader);
+        categorySection.appendChild(categoryContent);
+        container.appendChild(categorySection);
+    });
+}
+
+function getDifficultyColor(difficulty) {
+    switch(difficulty) {
+        case 'easy': return '#4CAF50';
+        case 'medium': return '#FFC107';
+        case 'hard': return '#F44336';
+        default: return '#9E9E9E';
+    }
+}
+
+function stringToColor(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    let color = '#';
+    for (let i = 0; i < 3; i++) {
+        const value = (hash >> (i * 8)) & 0xFF;
+        color += ('00' + value.toString(16)).substr(-2);
+    }
+    return color;
+}
+
+function toggleProblemCompletion(userName, problemId) {
+    const user = users.find(u => u.name === userName);
+    if (!user) return;
+    
+    if (user.progress[problemId]) {
+        delete user.progress[problemId];
+        user.totalSolved--;
+    } else {
+        user.progress[problemId] = true;
+        user.totalSolved++;
+    }
+    
+    // Update challenge progress if this is a new completion
+    const problem = problems.find(p => p.id === problemId);
+    if (problem && !user.progress[problemId]) {
+        updateChallengeProgress(problem.category);
+    }
+    
+    saveData();
+    renderCategories();
+    updateDashboard();
+    updateLeaderboard();
+}
+
+// Dashboard Updates
+function updateDashboard() {
+    // Update user count
+    document.getElementById('totalUsers').textContent = users.length;
+    
+    // Update problem count
+    document.getElementById('totalProblems').textContent = problems.length;
+    
+    // Update team progress
+    const avgProgress = users.length > 0 
+        ? Math.round((users.reduce((sum, user) => sum + user.totalSolved, 0) / (users.length * problems.length)) * 100) 
+        : 0;
+    document.getElementById('avgProgress').textContent = `${avgProgress}%`;
+    
+    // Update streak display (using the highest streak in the team)
+    const maxStreak = users.length > 0 
+        ? Math.max(...users.map(user => user.streak)) 
+        : 0;
+    document.getElementById('activeStreak').textContent = maxStreak;
+    
+    // Update daily challenge progress
+    const dailyProgress = Math.min(100, (challenges.daily.current / challenges.daily.target) * 100);
+    document.getElementById('dailyChallengeProgress').style.width = `${dailyProgress}%`;
+    document.getElementById('dailyChallengeText').textContent = challenges.daily.description;
+    
+    // Update weekly challenges
+    challenges.weekly.forEach(challenge => {
+        const challengeElement = document.getElementById(challenge.id);
+        if (challengeElement) {
+            const progress = Math.min(100, (challenge.current / challenge.target) * 100);
+            const progressBar = challengeElement.querySelector('.progress-fill');
+            progressBar.style.width = `${progress}%`;
+            
+            if (progress >= 100) {
+                challengeElement.classList.add('completed');
+                challengeElement.querySelector('h4').innerHTML = `${challenge.name} <span style="color: #4CAF50;">✓</span>`;
+            } else {
+                challengeElement.classList.remove('completed');
+                challengeElement.querySelector('h4').textContent = challenge.name;
+            }
+        }
+    });
+    
+    // Update user cards
+    const usersGrid = document.getElementById('usersGrid');
+    usersGrid.innerHTML = '';
+    
+    users.forEach(user => {
+        const userCard = document.createElement('div');
+        userCard.className = 'user-card';
+        
+        const progressPercentage = problems.length > 0 
+            ? Math.round((user.totalSolved / problems.length) * 100) 
+            : 0;
+        
+        userCard.innerHTML = `
+            <h3>${user.name}</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: ${progressPercentage}%"></div>
+            </div>
+            <p>Solved: ${user.totalSolved} / ${problems.length} (${progressPercentage}%)</p>
+            <div class="streak-indicator">🔥 ${user.streak} day streak</div>
+        `;
+        
+        usersGrid.appendChild(userCard);
+    });
+    
+    // Update challenge card states
+    updateChallengeCardStates();
+}
+
+function updateChallengeCardStates() {
+    const totalProblemsCard = document.getElementById('totalProblemsCard');
+    const teamSizeCard = document.getElementById('teamSizeCard');
+    const teamProgressCard = document.getElementById('teamProgressCard');
+    const activeStreakCard = document.getElementById('activeStreakCard');
+    
+    // Reset all cards
+    [totalProblemsCard, teamSizeCard, teamProgressCard, activeStreakCard].forEach(card => {
+        card.classList.remove('completed', 'pulse-animation');
+    });
+    
+    // Add pulse animation to cards with active data
+    if (problems.length > 0) {
+        totalProblemsCard.classList.add('pulse-animation');
+    }
+    if (users.length > 0) {
+        teamSizeCard.classList.add('pulse-animation');
+        teamProgressCard.classList.add('pulse-animation');
+        activeStreakCard.classList.add('pulse-animation');
+    }
+    
+    // Mark as completed if goals are met
+    if (problems.length >= 50) {
+        totalProblemsCard.classList.add('completed');
+    }
+    
+    const avgProgress = users.length > 0 
+        ? Math.round((users.reduce((sum, user) => sum + user.totalSolved, 0) / (users.length * problems.length)) * 100) 
+        : 0;
+    
+    if (avgProgress >= 50) {
+        teamProgressCard.classList.add('completed');
+    }
+}
+
+// Leaderboard
+function updateLeaderboard() {
+    const leaderboardList = document.getElementById('leaderboardList');
+    leaderboardList.innerHTML = '';
+    
+    // Sort users by problems solved (descending)
+    const sortedUsers = [...users].sort((a, b) => b.totalSolved - a.totalSolved);
+    
+    sortedUsers.forEach((user, index) => {
+        const leaderboardItem = document.createElement('div');
+        leaderboardItem.className = 'leaderboard-item';
+        
+        leaderboardItem.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-weight: bold; color: ${getMedalColor(index)}">${index + 1}.</span>
+                <div style="width: 30px; height: 30px; border-radius: 50%; background-color: ${stringToColor(user.name)}; 
+                    display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                    ${user.name.charAt(0).toUpperCase()}
+                </div>
+                <span>${user.name}</span>
+            </div>
+            <div style="font-weight: bold;">
+                ${user.totalSolved} problems
+            </div>
+        `;
+        
+        leaderboardList.appendChild(leaderboardItem);
+    });
+}
+
+function getMedalColor(position) {
+    switch(position) {
+        case 0: return '#FFD700'; // Gold
+        case 1: return '#C0C0C0'; // Silver
+        case 2: return '#CD7F32'; // Bronze
+        default: return '#FFFFFF';
+    }
+}
+
+// Data Persistence
+function saveData() {
+    const data = {
+        users,
+        problems,
+        categories,
+        challenges,
+        version: '1.0'
+    };
+    localStorage.setItem('dsaTrackerData', JSON.stringify(data));
+}
+
+function loadData() {
+    const savedData = localStorage.getItem('dsaTrackerData');
+    if (savedData) {
+        try {
+            const data = JSON.parse(savedData);
+            users = data.users || [];
+            problems = data.problems || [];
+            categories = data.categories || {};
+            challenges = data.challenges || {
+                daily: {
+                    target: 3,
+                    current: 0,
+                    description: "Solve at least 3 problems to maintain your streak!"
+                },
+                weekly: [
+                    {
+                        id: "arrayChallenge",
+                        name: "Array Master",
+                        target: 5,
+                        current: 0,
+                        category: "Arrays and Strings"
+                    },
+                    {
+                        id: "dpChallenge",
+                        name: "DP Initiate",
+                        target: 3,
+                        current: 0,
+                        category: "Dynamic Programming"
+                    }
+                ]
+            };
+        } catch (e) {
+            console.error('Failed to parse saved data', e);
+        }
+    }
+}
+
+function exportData() {
+    const data = {
+        users,
+        problems,
+        categories,
+        challenges,
+        version: '1.0'
+    };
+    
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `dsa-tracker-${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    document.getElementById('exportResult').innerHTML = `
+        <p style="color: #4CAF50;">Data exported successfully!</p>
+    `;
+}
+
+function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = JSON.parse(e.target.result);
+            
+            if (confirm('This will overwrite your current data. Continue?')) {
+                users = data.users || [];
+                problems = data.problems || [];
+                categories = data.categories || {};
+                challenges = data.challenges || {
+                    daily: {
+                        target: 3,
+                        current: 0,
+                        description: "Solve at least 3 problems to maintain your streak!"
+                    },
+                    weekly: []
+                };
+                
+                saveData();
+                updateDashboard();
+                renderCategories();
+                updateCategoryDatalist();
+                renderCategoriesManagement();
+                
+                document.getElementById('exportResult').innerHTML = `
+                    <p style="color: #4CAF50;">Data imported successfully!</p>
+                `;
+            }
+        } catch (e) {
+            document.getElementById('exportResult').innerHTML = `
+                <p style="color: #F44336;">Error importing data: ${e.message}</p>
+            `;
+            console.error('Import error', e);
+        }
+    };
+    reader.readAsText(file);
+}
+
+// Initialize with some demo data if empty
+function initializeDemoData() {
+    if (users.length === 0 && problems.length === 0) {
+        users = [
+            { name: "Alice", progress: {}, totalSolved: 0, streak: 7 },
+            { name: "Bob", progress: {}, totalSolved: 0, streak: 3 },
+            { name: "Charlie", progress: {}, totalSolved: 0, streak: 1 }
+        ];
+        
+        problems = [
+            {
+                id: 1,
+                title: "Two Sum",
+                category: "Arrays and Strings",
+                subcategory: "Basic Array Operations",
+                source: "LeetCode",
+                url: "https://leetcode.com/problems/two-sum/",
+                difficulty: "easy",
+                notes: "Use a hash map for O(n) solution",
+                dateAdded: new Date().toLocaleDateString()
+            },
+            {
+                id: 2,
+                title: "Reverse String",
+                category: "Arrays and Strings",
+                subcategory: "String Manipulation",
+                source: "LeetCode",
+                url: "https://leetcode.com/problems/reverse-string/",
+                difficulty: "easy",
+                notes: "Two pointer approach works well",
+                dateAdded: new Date().toLocaleDateString()
+            },
+            {
+                id: 3,
+                title: "Maximum Subarray",
+                category: "Arrays and Strings",
+                subcategory: "Subarray Problems",
+                source: "LeetCode",
+                url: "https://leetcode.com/problems/maximum-subarray/",
+                difficulty: "medium",
+                notes: "Kadane's algorithm is optimal",
+                dateAdded: new Date().toLocaleDateString()
+            }
+        ];
+        
+        saveData();
+    }
+}
+
+// Call initializeDemoData after DOM loads if you want demo data
+document.addEventListener('DOMContentLoaded', function() {
+    initializeDemoData();
+});
+</script>
 </body>
 </html>
